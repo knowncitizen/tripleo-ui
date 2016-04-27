@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import apiStatusReducer from './apiStatusReducer';
 import currentPlanReducer from './currentPlanReducer';
 import environmentConfigurationReducer from './environmentConfigurationReducer';
 import loginReducer from './loginReducer';
@@ -12,6 +13,7 @@ import stacksReducer from './stacksReducer';
 import validationsReducer from './validationsReducer';
 
 const appReducer = combineReducers({
+  apiStatus: apiStatusReducer,
   currentPlan: currentPlanReducer,
   environmentConfiguration: environmentConfigurationReducer,
   login: loginReducer,

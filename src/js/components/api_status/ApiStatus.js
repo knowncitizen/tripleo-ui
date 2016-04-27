@@ -4,7 +4,11 @@ import React from 'react';
 import { Map } from 'immutable';
 
 import ApiStatusActions from '../../actions/ApiStatusActions';
+<<<<<<< HEAD
 import Status from './Status';
+=======
+import ApiStatusContent from './ApiStatusContent';
+>>>>>>> fd927a0... [WIP]Adds thunk component, actions, records, reducer for a service status page.
 import { isLoggedIn } from '../../selectors/login';
 
 class ApiStatus extends React.Component {
@@ -20,7 +24,11 @@ class ApiStatus extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     return <Status items={this.props.items}/>;
+=======
+    return <ApiStatusContent items={this.props.items}/>;
+>>>>>>> fd927a0... [WIP]Adds thunk component, actions, records, reducer for a service status page.
   }
 }
 
