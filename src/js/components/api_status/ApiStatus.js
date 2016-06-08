@@ -4,12 +4,11 @@ import React from 'react';
 import { Map } from 'immutable';
 
 import ApiStatusActions from '../../actions/ApiStatusActions';
-<<<<<<< HEAD
 import Status from './Status';
-=======
-import ApiStatusContent from './ApiStatusContent';
->>>>>>> fd927a0... [WIP]Adds thunk component, actions, records, reducer for a service status page.
 import { isLoggedIn } from '../../selectors/login';
+import Modal from '../ui/Modal';
+
+
 
 class ApiStatus extends React.Component {
   componentDidMount() {
@@ -24,11 +23,7 @@ class ApiStatus extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
     return <Status items={this.props.items}/>;
-=======
-    return <ApiStatusContent items={this.props.items}/>;
->>>>>>> fd927a0... [WIP]Adds thunk component, actions, records, reducer for a service status page.
   }
 }
 
@@ -38,8 +33,8 @@ ApiStatus.propTypes = {
   checkKeystoneAPI: React.PropTypes.func.isRequired,
   checkTripleOApi: React.PropTypes.func.isRequired,
   checkValidationsApi: React.PropTypes.func.isRequired,
-  items: ImmutablePropTypes.map,
-  isLoggedIn: React.PropTypes.bool
+  isLoggedIn: React.PropTypes.bool,
+  items: ImmutablePropTypes.map
 };
 
 ApiStatus.defaultProps = {

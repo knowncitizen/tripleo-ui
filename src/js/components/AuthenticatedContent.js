@@ -4,7 +4,6 @@ import React from 'react';
 
 import { getValidationStages, getValidationsStatusCounts } from '../selectors/validations';
 import Loader from './ui/Loader';
-import StickyFooter from './ui/StickyFooter';
 import LoginActions from '../actions/LoginActions';
 
 import NavBar from './NavBar';
@@ -64,7 +63,7 @@ export default class AuthenticatedContent extends React.Component {
           </div>
         </Loader>
         <NotificationsToaster />
-        <StickyFooter />
+
       </div>
     );
   }

@@ -2,11 +2,11 @@ import ClassNames from 'classnames';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link } from 'react-router';
 import React from 'react';
+import Modal from '../ui/Modal';
 
 import ApiStatusConstants from '../../constants/ApiStatusConstants';
-import StickyFooter from '../ui/StickyFooter';
 
-class ApiStatusItem extends React.Component {
+export default class ApiStatusItem extends React.Component {
   render() {
     let connectionStatus, statusText;
 
@@ -18,7 +18,7 @@ class ApiStatusItem extends React.Component {
       'alert': true,
       'alert-danger': this.props.data.success === false,
       'alert-success': this.props.data.success,
-      'alert-info': this.props.data.isLoading === true,
+      'alert-info': this.props.data.isLoading === true
     });
 
     let iconClasses = ClassNames({
@@ -51,29 +51,17 @@ class ApiStatusItem extends React.Component {
 
 const Status = (props) => {
   return (
-    <div>
-    <header>
-      <nav className="navbar navbar-default navbar-pf navbar-fixed-top" role="navigation">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed"
-                  data-toggle="collapse" data-target="#tripleo-navbar-collapse"
-                  aria-expanded="false">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <Link className="navbar-brand" to="/">
-              <img src="/img/tripleo-owl.svg" alt="TripleO"></img>
-          </Link>
-        </div>
-        <div className="navbar-collapse collapse" id="tripleo-navbar-collapse">
-        </div>
-      </nav>
-    </header>
-    <div className="wrapper-fixed-body container-fluid">
-      <div className="row">
-        <div className="col-sm-12 col-lg-9">
+    <Modal dialogClasses="modal-lg">
+       <div className="modal-header">
+         <Link to={this.props.parentPath}
+               type="button"
+               className="close">
+           <span aria-hidden="true" className="pficon pficon-close"/>
+         </Link>
+         <h4 className="modal-title">Services Status</h4>
+       </div>
+       <div className="row container-fluid">
+         <div className="col-sm-12 col-lg-9">
           <section className="status-button">
             <article>
               <h2>Service Status</h2>
@@ -104,14 +92,24 @@ const Status = (props) => {
           </section>
         </div>
       </div>
-    </div>
-    <StickyFooter />
-    </div>
+      <div className="modal-footer">
+        <Link to={this.props.parentPath}
+              type="button"
+              className="btn btn-primary">
+          Close
+        </Link>
+      </div>
+    </Modal>
   );
-}
-
-Status.propTypes = {
-items: ImmutablePropTypes.map.isRequired
 };
 
-export default Status
+Status.propTypes = {
+  items: ImmutablePropTypes.map.isRequired,
+  parentPath: React.PropTypes.string.isRequired,
+  data: React.PropTypes.object
+};
+
+Status.defaultProps = {
+  parentPath: '/deployment-plan',
+  data: {}
+};

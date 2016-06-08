@@ -88,7 +88,7 @@ TempStorage.initialized.then(() => {
                    onEnter={checkRunningDeployment}/>
           </Route>
 
-          <Route path="status" component={Status}/>
+          <Route path="status" component={ApiStatus}/>
 
           <Redirect from="nodes" to="nodes/registered"/>
           <Route path="nodes" component={Nodes}>
