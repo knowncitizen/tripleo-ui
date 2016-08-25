@@ -1,4 +1,6 @@
 require('es6-promise').polyfill(); // https://github.com/webpack/css-loader/issues/144
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -88,9 +90,22 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new FaviconsWebpackPlugin({
+      logo: __dirname + '/src/img/owl.png',
+      inject: true,
+      background: '#fff'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'TripleO',
+      minify: false,
+      template: __dirname + '/src/index.ejs'
+    })
+  ],
   devServer: {
     contentBase: './dist',
-    port: 3000,
+    host: "0.0.0.0",
+    port: 30001,
     colors: true,
     historyApiFallback: true,
     inline: true
